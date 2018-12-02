@@ -29,7 +29,7 @@ class HumiditySensor(Thing):
     """ Humidity Sensor using the SenseHat """
     def __init__(self):
         Thing.__init__(self,
-                'Sensehat HUmidity Sensor',
+                'Sensehat Humidity Sensor',
                 ['MultiLevelSensor'],
                 'A web connected humidity sensor')
 
@@ -41,11 +41,11 @@ class HumiditySensor(Thing):
                     metadata={
                         '@type': 'LevelProperty',
                         'label': 'HUmidity',
-                        'type': 'number',
+                        'type': 'float',
                         'description': 'The current humidity in %',
                         'minimum': 0,
                         'maximum': 100,
-                        'unit': 'precent',
+                        'unit': 'percent',
                         'readonly': True,
                     }))
         logging.debug('Starting the sensor update loop')
@@ -77,7 +77,7 @@ def run_server():
         SensorHumidity.cancel_update_level_task()
         logging.info('stopping the server')
         server.stop()
-        loggeing.info('done')
+        logging.info('done')
 
 if __name__=='__main__':
     run_server()
